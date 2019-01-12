@@ -1,65 +1,66 @@
-import React from 'react';
-import { Form, Select, InputNumber, DatePicker, Switch, Slider, Button } from 'antd';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { Layout, Menu, Breadcrumb } from "antd";
+import styled from "styled-components";
+import instabot from "./instabot.svg";
 
-const { Option } = Select;
+const { Header, Content, Footer } = Layout;
+
+const NavbarWrapper = styled(Header)`
+  width: 100%;
+  position: fixed;
+  zindex: 1;
+  background-image: linear-gradient(to right, #8a3ab9, #bc2a8d);
+`;
+
+const Navigation = styled(Menu)`
+  background-color: transparent;
+`;
 
 const App = () => (
-  <Form>
-    <Form.Item
-      label="数字输入框"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 8 }}
-    >
-      <InputNumber min={1} max={10} defaultValue={3} />
-      <span className="ant-form-text"> 台机器</span>
-      <a href="https://ant.design">链接文字</a>
-    </Form.Item>
-    <Form.Item
-      label="开关"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 8 }}
-    >
-      <Switch defaultChecked />
-    </Form.Item>
-    <Form.Item
-      label="滑动输入条"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 8 }}
-    >
-      <Slider defaultValue={70} />
-    </Form.Item>
-    <Form.Item
-      label="选择器"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 8 }}
-    >
-      <Select defaultValue="lucy" style={{ width: 192 }}>
-        <Option value="jack">jack</Option>
-        <Option value="lucy">lucy</Option>
-        <Option value="disabled" disabled>disabled</Option>
-        <Option value="yiminghe">yiminghe</Option>
-      </Select>
-    </Form.Item>
-    <Form.Item
-      label="日期选择框"
-      labelCol={{ span: 8 }}
-      wrapperCol={{ span: 8 }}
-    >
-      <DatePicker />
-    </Form.Item>
-    <Form.Item
-      style={{ marginTop: 48 }}
-      wrapperCol={{ span: 8, offset: 8 }}
-    >
-      <Button type="primary" htmlType="submit">
-        确定
-      </Button>
-      <Button style={{ marginLeft: 8 }}>
-        取消
-      </Button>
-    </Form.Item>
-  </Form>
+  <Layout
+    style={{
+      height: "100vh"
+    }}
+  >
+    <NavbarWrapper>
+      <div
+        style={{
+          width: 120,
+          height: 31,
+          backgroundImage: `url(${instabot}), linear-gradient(to right, #fbad50, #e95950)`,
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundSize: "contain",
+          margin: "16px 24px 16px 0",
+          float: "left"
+        }}
+        className="logo"
+      />
+      <Navigation
+        mode="horizontal"
+        defaultSelectedKeys={["2"]}
+        style={{ lineHeight: "64px" }}
+      >
+        <Menu.Item key="1">nav 1</Menu.Item>
+        <Menu.Item key="2">nav 2</Menu.Item>
+        <Menu.Item key="3">nav 3</Menu.Item>
+      </Navigation>
+    </NavbarWrapper>
+    <Content style={{ padding: "0 50px", marginTop: 64 }}>
+      <Breadcrumb style={{ margin: "16px 0" }}>
+        <Breadcrumb.Item>Home</Breadcrumb.Item>
+        <Breadcrumb.Item>List</Breadcrumb.Item>
+        <Breadcrumb.Item>App</Breadcrumb.Item>
+      </Breadcrumb>
+      <div style={{ background: "#F9F9F9", padding: 24, minHeight: 380 }}>
+        Content
+      </div>
+    </Content>
+    <Footer style={{ textAlign: "center" }}>
+      Ant Design ©2018 Created by Ant UED
+    </Footer>
+  </Layout>
 );
 
 export default App;
